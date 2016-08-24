@@ -1,15 +1,14 @@
 {
   "name": "plugin-directory",
   "description": "a template for plugin directories made by npm tags",
-  "version": "0.0.1",
-  "author": "carrot",
+  "version": "0.0.0",
+  "author": "Jeff Escalante",
   "ava": {
     "verbose": "true"
   },
   "bugs": "https://github.com/carrot/plugin-directory/issues",
   "dependencies": {
     "babel-preset-es2015": "^6.13.2",
-    "babel-preset-es2016": "^6.11.3",
     "image-webpack-loader": "^2.0.0",
     "spike-css-standards": "^0.1.0",
     "spike-html-standards": "^0.3.1",
