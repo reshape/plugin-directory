@@ -8,7 +8,7 @@ const name = 'reshape'
 const locals = {
   title: `${name[0].toUpperCase() + name.slice(1)} Plugin Directory`,
   githubUrl: `https://github.com/${name}/${name}`,
-  gitterUrl: `https://gitter.im/${name}`,
+  gitterUrl: `https://gitter.im/${name}/${name}`,
   documentationUrl: `https://github.com/${name}/${name}#writing-a-plugin`
 }
 
