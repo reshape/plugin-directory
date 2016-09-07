@@ -13,7 +13,7 @@
     "spike-css-standards": "^0.1.0",
     "spike-html-standards": "^0.3.1",
     "spike-records": "^0.3.0",
-    "webpack": "^1.13.1"
+    "webpack": "^1.13.2"
   },
   "devDependencies": {
     "ava": "^0.16.0",
