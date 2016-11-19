@@ -35,7 +35,7 @@ module.exports = {
     new Records({
       addDataTo: locals,
       plugins: {
-        url: `https://api.npms.io/search?term=${name}-plugin`,
+        url: `https://api.npms.io/v1/search?term=${name}-plugin`,
         transform: (res) => {
           return res.results.filter((p) => {
             return pluginBlacklist.indexOf(p.module.name) < 0
