@@ -17,10 +17,10 @@ const pluginBlacklist = [name]
 module.exports = {
   devtool: 'source-map',
   matchers: {
-    html: '**/*.sml',
+    html: '**/*.sgr',
     css: '**/*.sss'
   },
-  ignore: ['**/layout.sml', '**/_*', '**/.*'],
+  ignore: ['**/layout.sgr', '**/_*', '**/.*'],
   reshape: (ctx) => {
     return htmlStandards({ webpack: ctx, locals })
   },
@@ -35,6 +35,7 @@ module.exports = {
         url: `https://api.npms.io/v1/search?term=${name}-plugin`,
         transform: (res) => {
           return res.results.filter((p) => {
+            if (p.module.deprecated) return false
             return pluginBlacklist.indexOf(p.module.name) < 0
           })
         }
