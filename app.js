@@ -32,7 +32,8 @@ module.exports = {
     new Records({
       addDataTo: locals,
       plugins: {
-        url: `https://api.npms.io/v2/search?q=keywords:${name}-plugin`,
+        url:
+        `https://api.npms.io/v2/search?q=keywords:${name}-plugin&size=100`,
         transform: (res) => {
           return res.results.filter((p) => {
             if (p.flags.deprecated) return false
