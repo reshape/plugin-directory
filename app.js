@@ -32,11 +32,11 @@ module.exports = {
     new Records({
       addDataTo: locals,
       plugins: {
-        url: `https://api.npms.io/v1/search?term=${name}-plugin`,
+        url: `https://api.npms.io/v2/search?q=keywords:${name}-plugin`,
         transform: (res) => {
           return res.results.filter((p) => {
-            if (p.module.deprecated) return false
-            return pluginBlacklist.indexOf(p.module.name) < 0
+            if (p.flags.deprecated) return false
+            return pluginBlacklist.indexOf(p.package.name) < 0
           })
         }
       }

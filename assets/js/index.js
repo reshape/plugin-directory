@@ -12,10 +12,10 @@ $('.search').onkeyup = () => {
 
   // search relevant module fields for matches
   const matches = list.reduce((m, p) => {
-    if (p.module.name.match(re)) { m.push(p.id); return m }
-    if (p.module.description.match(re)) { m.push(p.id); return m }
-    if (p.module.publisher.username.match(re)) { m.push(p.id); return m }
-    if (p.module.keywords && p.module.keywords.indexOf(val) > -1) {
+    if (p.package.name.match(re)) { m.push(p.id); return m }
+    if (p.package.description.match(re)) { m.push(p.id); return m }
+    if (p.package.publisher.username.match(re)) { m.push(p.id); return m }
+    if (p.package.keywords && p.package.keywords.indexOf(val) > -1) {
       m.push(p.id); return m
     }
     return m
