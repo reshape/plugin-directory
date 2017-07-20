@@ -3,9 +3,12 @@ extends(src='layout.sgr')
     h1 {{ title }}
 
     ul.social
-      li.github: a(href='{{ githubUrl }}') github repo
-      li.gitter: a(href='{{ gitterUrl }}') gitter chat
-      li.docs: a(href='{{ documentationUrl }}') documentation
+      li.github
+        a(href='{{ githubUrl }}') github repo
+      li.gitter
+        a(href='{{ gitterUrl }}') gitter chat
+      li.docs
+        a(href='{{ documentationUrl }}') documentation
 
     form.search
       input.field(placeholder='search...')
@@ -20,15 +23,17 @@ extends(src='layout.sgr')
         th Links
       each(loop='p, i of plugins')
         tr(class='p{{ i }}')
-          td.name: a(href='{{ p.package.links.repository }}') {{ p.package.name }}
+          td.name
+            a(href='{{ p.package.links.repository }}') {{ p.package.name }}
           td {{ p.package.description }}
           td.quality {{ Math.round(((p.score.detail.quality + p.score.detail.maintenance) / 2) * 100) }}
-          td.author: a(href='https://npmjs.com/~{{ p.package.publisher.username }}') {{ p.package.publisher.username }}
+          td.author
+            a(href='https://npmjs.com/~{{ p.package.publisher.username }}') {{ p.package.publisher.username }}
           td
             .links
               a.github(href='{{ p.package.links.repository }}') gh
               a.npm(href='{{ p.package.links.npm }}') npm
 
-    small built with <a href=https://spike.readme.io>spike</a>
+    small(mdi) built with [spike](https://spike.cf)
 
     script var plugins = {{{ JSON.stringify(plugins) }}}

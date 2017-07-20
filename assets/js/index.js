@@ -1,7 +1,10 @@
 /* global plugins */
 const $ = document.querySelector.bind(document)
 const $a = document.querySelectorAll.bind(document)
-const list = plugins.map((p, i) => { p.id = `.p${i}`; return p })
+const list = plugins.map((p, i) => {
+  p.id = `.p${i}`
+  return p
+})
 
 $('.search').onsubmit = () => false
 
@@ -16,7 +19,8 @@ $('.search').onkeyup = () => {
     if (p.package.description.match(re)) { m.push(p.id); return m }
     if (p.package.publisher.username.match(re)) { m.push(p.id); return m }
     if (p.package.keywords && p.package.keywords.indexOf(val) > -1) {
-      m.push(p.id); return m
+      m.push(p.id)
+      return m
     }
     return m
   }, [])
@@ -29,8 +33,6 @@ $('.search').onkeyup = () => {
   // add classes to hide non-matching elements
   if (matches.length) {
     const toHide = $a(`tr:not(.header):not(${matches.join('):not(')})`)
-    toHide.forEach((el) => {
-      el.className = `${el.className} hidden`
-    })
+    toHide.forEach((el) => { el.className = `${el.className} hidden` })
   }
 }

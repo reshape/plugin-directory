@@ -1,7 +1,8 @@
-const htmlStandards = require('spike-html-standards')
+const htmlStandards = require('reshape-standard')
 const cssStandards = require('spike-css-standards')
-const es2015 = require('babel-preset-es2015')
+const jsStandards = require('spike-js-standards')
 const Records = require('spike-records')
+const isProduction = process.env.NODE_ENV === 'production'
 
 const name = 'reshape'
 
@@ -15,19 +16,11 @@ const locals = {
 const pluginBlacklist = [name]
 
 module.exports = {
-  devtool: 'source-map',
-  matchers: {
-    html: '**/*.sgr',
-    css: '**/*.sss'
-  },
-  ignore: ['**/layout.sgr', '**/_*', '**/.*'],
-  reshape: (ctx) => {
-    return htmlStandards({ webpack: ctx, locals })
-  },
-  postcss: (ctx) => {
-    return cssStandards({ webpack: ctx })
-  },
-  babel: { presets: [es2015] },
+  matchers: { html: '**/*.sgr', css: '**/*.sss' },
+  ignore: ['**/layout.sgr', '**/_*', '**/.*', 'yarn.lock', 'readme.md', 'license.md'],
+  reshape: htmlStandards({ locals, minify: isProduction }),
+  postcss: cssStandards({ minify: isProduction }),
+  babel: jsStandards(),
   plugins: [
     new Records({
       addDataTo: locals,
