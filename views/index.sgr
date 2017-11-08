@@ -24,7 +24,7 @@ extends(src='layout.sgr')
       each(loop='p, i of plugins')
         tr(class='p{{ i }}')
           td.name
-            a(href='{{ p.package.links.repository }}') {{ p.package.name }}
+            a(href='{{ p.package.links.repository || p.package.links.npm }}') {{ p.package.name }}
           td {{ p.package.description }}
           td.quality {{ Math.round(((p.score.detail.quality + p.score.detail.maintenance) / 2) * 100) }}
           td.author
