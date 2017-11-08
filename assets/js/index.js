@@ -36,3 +36,33 @@ $('.search').onkeyup = () => {
     toHide.forEach((el) => { el.className = `${el.className} hidden` })
   }
 }
+
+let isTableScrolling = false
+const tableWrapper = $('.table-wrapper')
+const tableWrapperFx = $('.table-wrapper-fx')
+const tableWrapperLeft = $('.tableWrapper:before')
+const tableWrapperright = $('.tableWrapper:after')
+
+tableWrapper.onscroll = () => {
+  isTableScrolling = true
+}
+const setTableScrollFx = () => {
+  if (tableWrapper.scrollLeft > 0) {
+    tableWrapperFx.classList.add('is-scrolled-left')
+  } else {
+    tableWrapperFx.classList.remove('is-scrolled-left')
+  }
+  if (tableWrapper.scrollWidth - tableWrapper.clientWidth - tableWrapper.scrollLeft > 0) {
+    tableWrapperFx.classList.add('is-scrolled-right')
+  } else {
+    tableWrapperFx.classList.remove('is-scrolled-right')
+  }
+}
+
+setInterval(() => {
+  if (isTableScrolling) {
+    setTableScrollFx()
+    isTableScrolling = false
+  }
+}, 100)
+setTableScrollFx()

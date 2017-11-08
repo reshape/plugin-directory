@@ -14,31 +14,33 @@ extends(src='layout.sgr')
       input.field(placeholder='search...')
       input(type='submit')
 
-    table
-      tr.header
-        th Name
-        th Description
-        th Quality
-        th Author
-        th Links
-      each(loop='p, i of plugins')
-        tr(class='p{{ i }}')
-          td.name
-            a(href='{{ p.package.links.repository || p.package.links.npm }}') {{ p.package.name }}
-          td {{ p.package.description }}
-          td.quality {{ Math.round(((p.score.detail.quality + p.score.detail.maintenance) / 2) * 100) }}
-          td.author
-            a(href='https://npmjs.com/~{{ p.package.publisher.username }}') {{ p.package.publisher.username }}
-          td
-            .links
-              if(condition='p.package.links.repository')
-                a.github(href='{{ p.package.links.repository }}') gh
-              else
-                span.github gh
-              if(condition='p.package.links.npm')
-                a.npm(href='{{ p.package.links.npm }}') npm
-              else
-                span.npm npm
+    .table-wrapper-fx
+      .table-wrapper
+        table
+          tr.header
+            th Name
+            th Description
+            th Quality
+            th Author
+            th Links
+          each(loop='p, i of plugins')
+            tr(class='p{{ i }}')
+              td.name
+                a(href='{{ p.package.links.repository || p.package.links.npm }}') {{ p.package.name }}
+              td {{ p.package.description }}
+              td.quality {{ Math.round(((p.score.detail.quality + p.score.detail.maintenance) / 2) * 100) }}
+              td.author
+                a(href='https://npmjs.com/~{{ p.package.publisher.username }}') {{ p.package.publisher.username }}
+              td
+                .links
+                  if(condition='p.package.links.repository')
+                    a.github(href='{{ p.package.links.repository }}') gh
+                  else
+                    span.github gh
+                  if(condition='p.package.links.npm')
+                    a.npm(href='{{ p.package.links.npm }}') npm
+                  else
+                    span.npm npm
 
     small(mdi) built with [spike](https://spike.cf)
 
