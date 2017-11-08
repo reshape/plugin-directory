@@ -31,8 +31,14 @@ extends(src='layout.sgr')
             a(href='https://npmjs.com/~{{ p.package.publisher.username }}') {{ p.package.publisher.username }}
           td
             .links
-              a.github(href='{{ p.package.links.repository }}') gh
-              a.npm(href='{{ p.package.links.npm }}') npm
+              if(condition='p.package.links.repository')
+                a.github(href='{{ p.package.links.repository }}') gh
+              else
+                span.github gh
+              if(condition='p.package.links.npm')
+                a.npm(href='{{ p.package.links.npm }}') npm
+              else
+                span.npm npm
 
     small(mdi) built with [spike](https://spike.cf)
 
