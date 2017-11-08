@@ -7,7 +7,7 @@ html
     meta(name='description' content='a directory for plugins')
     meta(name='author' content='Jeff Escalante')
     meta(name='viewport' content='width=device-width, initial-scale=1')
-    link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:400,500,700,300')
+    link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700')
     title {{ title }}
     link(rel='stylesheet' href='css/index.css')
 
